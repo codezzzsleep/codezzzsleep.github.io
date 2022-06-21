@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://example.com</id>
-    <title>Hexo</title>
+    <title>博客心得</title>
     <link href="http://example.com" />
     <updated>2022-06-21T16:04:34.476Z</updated>
     <entry>
