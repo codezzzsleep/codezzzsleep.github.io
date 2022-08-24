@@ -1,0 +1,27 @@
+# 设计模式之  Database/SQL 与 GORM 实践 | 青训营笔记
+
+> 这是我参与「第三届青训营 -后端场」笔记创作活动的的第5篇笔记	
+
+[TOC]
+
+
+
+# 1.理解database/sql
+
+## 1.1基本用法
+
+实现接口
+
+连接数据库
+
+关闭连接
+
+## 1.2 设计原理
+
+![image-20220515111751422](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205151117577.png)
+
+# 2. CORM 使用简介
+
+# 3. CORM 设计原理
+
+# 4. CORM 最佳实践
