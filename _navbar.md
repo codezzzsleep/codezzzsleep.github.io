@@ -4,6 +4,7 @@
     <!-- * [c](docs/c/_sidebar.md) -->
     <!-- * [c#](docs/c#/_sidebar.md) -->
     * [go](docs/go/_sidebar.md)
+    * [牛客刷题](docs/nowcoder/_sidebar.md)
     <!-- * java -->
 <!-- * 面试资料
 * 文章推荐
