@@ -1,5 +1,6 @@
 * 数据库
-* * [2022/9/18](docs/nowcoder/docs1.md)
+* * [数据库笔记（未分段）](docs/nowcoder/数据库.md)
 * 数据结构
+* * [数据结构笔记（未分段）](docs/nowcoder/数据结构.md)
 * 计算机组成原理
 * 操作系统
