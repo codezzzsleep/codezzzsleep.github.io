@@ -21,4 +21,12 @@
 
 5. 在idea中配置jdk（在环境中配置了`JAVA_HOME`会自动定位）
 
-6. 
+### 补充——idea快捷键
+
+1. ctrl+x 	删除当前行(dddd)
+2. alt+/       自动补全代码
+3. ctrl+/      注释和取消注释
+4. alt+enter 快速导入包
+5. ctrl+alt+L  快速格式化
+6.  alt+insert 生成构造器
+7. ctrl+alt+v 快速生成返回值
