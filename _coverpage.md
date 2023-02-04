@@ -7,6 +7,7 @@
 - 记录生活，享受美好
 
 [GitHub](https://github.com/codezzzsleep)
-[Gitee](https://gitee.com/codezzzsleep)/[曾用Gitee](https://gitee.com/where-know-return)
+
+[Gitee](https://gitee.com/codezzzsleep)	/	[曾用Gitee](https://gitee.com/where-know-return)
 
 [Getting Started](/README.md)
