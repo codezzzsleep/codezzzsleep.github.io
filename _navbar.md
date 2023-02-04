@@ -3,8 +3,6 @@
 * 笔记
     * [算法](docs/%E7%AE%97%E6%B3%95/_sidebar.md)
     
-    * 
-    
       <!-- * [c](docs/c/_sidebar.md) -->
       <!-- * [c#](docs/c#/_sidebar.md) -->
     
@@ -18,6 +16,5 @@
     
 * 总结
 
-* 其他内容 -->
-
+* 杂项
     * [环境配置](docs/环境配置/_sidebar.md)
