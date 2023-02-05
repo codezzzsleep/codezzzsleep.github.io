@@ -74,11 +74,11 @@ int main() {
 
 **首先，规定一下横向和纵向分别代表什么意思**
 
-![image-20220317162735201](https://gitee.com/where-know-return/images/raw/master/202203171627399.png)
+![img](../../../resource/202302051547895.png)
 
 **然后，你一步步的填完整张表格**
 
-![image-20220317163329241](https://gitee.com/where-know-return/images/raw/master/202203171634088.png)
+![img](../../../resource/16755821540421675582154011.png)
 
 **最后，你果断选择了拿音响和吉他，却放弃了笔记本**
 
@@ -166,7 +166,7 @@ int main() {
 
 > 代码里面两个 **f [ j ]** 是否相同
 
- ![image-20220317214040320](https://gitee.com/where-know-return/images/raw/master/202203172140408.png)
+![img](../../../resource/16755820980451675582097779.png)
 
 ### 正确答案是：不相同
 

@@ -32,7 +32,7 @@
    >
    > 线程是有共享内存的,进程没有共享内存
 
-   ![image-20220525114719330](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205251147590.png)
+   ![img](../../../../../resource/202205251147590.png)
 
 2. 在实际开发过程中如何去开启一个协程
 
@@ -102,7 +102,7 @@
 >
 > 通过内存共享通信必须要获取临界区的权限，并且需要通过互斥链进行加锁
 
-![image-20220527084630554](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205270846831.png)
+![img](../../../../../resource/202205270846831.png)
 
 
 
@@ -122,7 +122,7 @@
 > make(chan int, 2)
 > ```
 
-![image-20220527085310789](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205270853950.png)
+![img](../../../../../resource/202205270853950.png)
 
 ```go
 //以一个生产消费模型来
@@ -233,7 +233,7 @@ WaitGroup暴露了三个方法
 
 ### 依赖配置
 
-![image-20220527224848278](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205272248510.png)
+![img](../../../../../resource/202205272248510.png)
 
 **go mod** 通过控制go proxy 环境变量来控制go proxy的配置
 

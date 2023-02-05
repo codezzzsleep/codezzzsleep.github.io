@@ -4,4 +4,4 @@
 
 代码https://github.com/codezzzsleep/CNN-demo
 
-![](../../resource/Net_LeNet.png)
+![img](../../resource/1675581962043Net_LeNet.png)

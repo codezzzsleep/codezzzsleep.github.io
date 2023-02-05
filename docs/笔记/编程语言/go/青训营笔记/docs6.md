@@ -56,11 +56,11 @@ Rust 的 pdqsort
 2. 平均时间复杂度 O(n*logn)
 3. 最坏时间复杂度 O(n*logn)
 
-![image-20220526001915795](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205260019982.png)
+![img](../../../../../resource/202205260019982.png)
 
 ## 从零打造 pdqsort
 
-![image-20220526002527327](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205260025449.png)
+![img](../../../../../resource/202205260025449.png)
 
 ### version 1
 

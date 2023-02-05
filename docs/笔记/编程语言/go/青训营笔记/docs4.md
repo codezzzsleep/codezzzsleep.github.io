@@ -18,7 +18,7 @@
 
 ## 1.2 设计原理
 
-![image-20220515111751422](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205151117577.png)
+![img](../../../../../resource/202205151117577.png)
 
 # 2. CORM 使用简介
 

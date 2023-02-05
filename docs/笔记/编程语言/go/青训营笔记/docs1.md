@@ -272,7 +272,7 @@
 
        不得不说，go是真的很强
 
-       ![image-20220508155530847](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205081555974.png)
+       ![img](../../../../../resource/202205081555974.png)
 
 13. 错误处理
 
@@ -280,7 +280,7 @@
 
     目标值，错误信息
 
-    ![image-20220508160054325](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205081600400.png)
+    ![img](../../../../../resource/202205081600400.png)
 
 14. 格式化输出
 
@@ -296,7 +296,7 @@
 
        > 发现一件事情，go 里面提供的方法（特别是流的转换方法）都习惯返回两个值，第二个是报错信息
 
-       ![image-20220508160533851](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205081605938.png)
+       ![img](../../../../../resource/202205081605938.png)
 
 16. 时间处理
 
@@ -345,7 +345,7 @@
 
     
 
-    ![image-20220508164040163](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205081640249.png) 
+    ![img](../../../../../resource/202205081640249.png) 
 
     
 

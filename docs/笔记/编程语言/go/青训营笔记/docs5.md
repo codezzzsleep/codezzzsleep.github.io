@@ -67,7 +67,7 @@
 
 ### Git的基本命令介绍
 
-![image-20220524221630506](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205242216639.png)
+![img](../../../../../resource/202205242216639.png)
 
 ### 常见问题
 
@@ -100,9 +100,9 @@ git init --template        #通过模板来创建预先构建好的自定义git�
 
 会打印出git目录树（tree是打印指定文件夹（也可以是磁盘）的目录树）
 
-![image-20220524222907907](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205242229963.png)
+!![img](../../../../../resource/202205242229963.png)
 
-### ![image-20220524223603522](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205242236588.png)
+![img](../../../../../resource/202205242236588.png)
 
 ### 常见的Git配置 
 
@@ -184,11 +184,11 @@ git init --template        #通过模板来创建预先构建好的自定义git�
 
       2. 通过 rebase
 
-         ![image-20220524235821969](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205242358039.png)
+         ![img](../../../../../resource/202205242358039.png)
 
       3. 通过filter --branch
 
-         ![image-20220524235801307](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205242358366.png)
+         ![img](../../../../../resource/202205242358366.png)
 
    8. git fsck --lost-found
 

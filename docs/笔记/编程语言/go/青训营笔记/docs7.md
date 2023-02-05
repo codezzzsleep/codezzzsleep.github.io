@@ -26,7 +26,7 @@
 
 3. RPC概念模型
 
-   ![image-20220527171408202](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205271714348.png)
+   ![img](../../../../../resource/202205271714348.png)
 
 4. 一次完整的RPC过程
 
@@ -48,7 +48,7 @@
 
 1. 例子
 
-   ![image-20220527180210376](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205271802496.png)
+   ![img](../../../../../resource/202205271802496.png)
 
 2. 编解码层的数据格式
 

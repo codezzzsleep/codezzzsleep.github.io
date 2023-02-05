@@ -40,7 +40,7 @@ int main(void) {
 
 ### GC回收算法
 
-![image-20220515011824245](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/434/202205150118353.png)
+![img](../../../../../resource/202205150118353.png)
 
 ## 1.1相关概念
 
