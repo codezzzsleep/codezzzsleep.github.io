@@ -1,6 +1,6 @@
 @REM echo "Start submitting code to the local repository"
 @REM echo "The current directory is：%cd%"
-git add *
+git add .
 @REM echo;
  
  
