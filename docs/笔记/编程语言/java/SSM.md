@@ -53,9 +53,14 @@ DI 依赖注入
 
    > 在注入时如果有多个相同类型的Bean可以使用 `@Qualifier("id_name")` 指定注入的名称
 
-   使用`@Value` 可以实现简单类型的注入
+   使用`@Value("数据")` 可以实现简单类型的注入
 
-6. 
+6. 注解加载外部的properties配置文件
+
+   1. 在SpringConfig类上面加 `@PropertySource("xx.properties")` 注解
+   2. `@Value(${})`
+
+7. 
 
 ### AOP
 
