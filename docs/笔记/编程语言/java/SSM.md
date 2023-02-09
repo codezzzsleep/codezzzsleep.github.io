@@ -60,7 +60,7 @@ DI 依赖注入
    1. 在SpringConfig类上面加 `@PropertySource("xx.properties")` 注解
    2. `@Value(${})`
 
-7. 
+7. spring管理第三方Bean `@Bean`
 
 ### AOP
 
