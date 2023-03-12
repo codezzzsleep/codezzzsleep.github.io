@@ -9,3 +9,9 @@
 2. 开始安装（推荐为所有用户安装，记得改安装路径）
 
 3. 
+
+4. wsl 安装 conda https://zhuanlan.zhihu.com/p/459607806
+
+```csharp
+
+```
