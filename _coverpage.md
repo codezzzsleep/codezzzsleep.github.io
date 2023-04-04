@@ -10,6 +10,7 @@
 
 [Gitee](https://gitee.com/codezzzsleep)	/	[曾用Gitee](https://gitee.com/where-know-return)
 
+[debug之路](docs/debug/debug.md)
+
 [Getting Started](/README.md)
 
-[debug之路](docs/debug/debug.md)
