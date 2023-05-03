@@ -9,5 +9,6 @@
 - 装机必备软件
 
   - [软件](docs/other/soft.md)
-
+  - [开发小tips](docs/other/开发小tips.md)
+  
   
