@@ -1,12 +1,23 @@
 # Self-supervised Learning
 
+### YouTube 视频
 
+1. [自督導式學習(一)](https://youtu.be/e422eloJ0W4)
+2. [自督導式學習(二)](https://youtu.be/gh0hewYkjgo)
+3. [自督導式學習(三)](https://youtu.be/ExXA05i8DEQ)
+4.  [自督導式學習(四)](https://youtu.be/WY_E0Sd4K80)
 
-所以对于自监督学习来说，存在三个挑战：
+### 知乎文章
 
-- 对于大量的无标签数据，如何进行表征学习？
-- 从数据的本身出发，如何设计有效的辅助任务 pretext？
-- 对于自监督学习到的表征，如何来评测它的有效性？
+1. [Self-supervised Learning 再次入门](https://zhuanlan.zhihu.com/p/108906502)
 
-![image-20230822100125640](http://image.zzzsleep.icu/202308221001689.png)
+   - 自动编码器[【全】一文带你了解自编码器（AutoEncoder）](https://zhuanlan.zhihu.com/p/80377698)
+   - 表征学习 [什么是Representation Learning？](https://zhuanlan.zhihu.com/p/136554341)
 
+2. [解读自监督学习(Self-Supervised Learning)几篇相关paper](https://zhuanlan.zhihu.com/p/96748604)
+
+   ![img](http://image.zzzsleep.icu/202308221455675.jpeg)
+
+   ![img](http://image.zzzsleep.icu/202308221455389.jpeg)
+
+3. 
