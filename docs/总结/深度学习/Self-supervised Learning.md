@@ -1,5 +1,9 @@
 # Self-supervised Learning
 
+> self-supervised learning 是为了解决如何进行高效的编码（高效是指，对下游任务而言，训练的效率）
+>
+> 自监督学习是无监督学习的一个子集，与其他无监督学习不同的是，自监督需要构造额外的监督信号
+
 ### YouTube 视频
 
 1. [自监督学习一)](https://youtu.be/e422eloJ0W4)
@@ -37,6 +41,8 @@
 
    - Word2vec [[NLP] 秒懂词向量Word2vec的本质](https://zhuanlan.zhihu.com/p/26306795) 
 
+   - Word2vec [深入浅出Word2Vec原理解析](https://zhuanlan.zhihu.com/p/114538417) 
+
      
 
 4. 对Bert进行fintune [【译】BERT Fine-Tuning 指南（with PyTorch）](https://zhuanlan.zhihu.com/p/143209797) 
@@ -49,9 +55,17 @@
 
 #### [解读自监督学习(Self-Supervised Learning)几篇相关paper](https://zhuanlan.zhihu.com/p/96748604)
 
-![img](http://image.zzzsleep.icu/202308221455675.jpeg)
 
-![img](http://image.zzzsleep.icu/202308221455389.jpeg)
 
-1. 
 
+
+1. ~~[自己动手写word2vec (四):CBOW和skip-gram模型](https://blog.csdn.net/u014595019/article/details/51943428)~~
+2. [PyTorch实现Word2Vec](https://cloud.tencent.com/developer/article/1613950)~
+
+![](http://image.zzzsleep.icu/202308231118256.png)
+
+这是我生成的 LaTeX 代码，你可以用它来显示这个公式：
+
+�=1�∑�=1�log⁡�(��,�)=1�∑�=1�log⁡∑�=1�exp⁡(��(��))L=N1i=1∑NlogE(xi,f)=N1i=1∑Nlogj=1∑Kexp(fj(xi))
+
+你觉得这个代码准确吗？你还有什么其他的数学问题吗？🧮
