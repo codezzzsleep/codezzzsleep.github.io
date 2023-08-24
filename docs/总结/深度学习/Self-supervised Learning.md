@@ -3,69 +3,37 @@
 > self-supervised learning 是为了解决如何进行高效的编码（高效是指，对下游任务而言，训练的效率）
 >
 > 自监督学习是无监督学习的一个子集，与其他无监督学习不同的是，自监督需要构造额外的监督信号
+>
+> **自监督学习，目前研究热点，关键在于如何设计有效的辅助任务 pretext**（辅助任务）
 
-### YouTube 视频
+1. 为什么使用这种学习方法？
 
-1. [自监督学习一)](https://youtu.be/e422eloJ0W4)
-2. [自监督学习二)](https://youtu.be/gh0hewYkjgo)
-3. [自监督学习(三)](https://youtu.be/ExXA05i8DEQ)
-4.  [自监督学习(四)](https://youtu.be/WY_E0Sd4K80)
+   - 首先是成本，完全的监督学习的成本过高
+   - 其次是效果，有一些无监督学习的成果甚至超过了监督学习
+   - 我们相信对于样本有更好的表示方法 ([Ankesh Anand](https://ankeshanand.com/blog/) 博客中提到的美元的例子)
 
-### 知乎文章
+2. 自监督学习的应用 （~表征学习）
 
-#### [Self-supervised Learning 再次入门](https://zhuanlan.zhihu.com/p/108906502)
+   - pretrain & fintune 模式 (Bert(基于上下文)，GPT(基于时序，预测)）
+   - 在NLP领域的应用，为词向量找到了更适合的编码方式（在Embedding空间中向量之间的距离也有意义，与one-hot编码相比，更适合下游的训练任务）
 
-##### 基于上下文
+3. 自监督学习中的pretext
 
-##### 基于时序
+   - 为广泛的下游任务设计pretext
+   - 为特定或者相对窄范围的下游任务设置pretext
 
-##### 基于对比
+   设计pretext需要找到合适的监督信号
 
-----
+4. 图与自监督学习
 
-1. 自动编码器[【全】一文带你了解自编码器（AutoEncoder）](https://zhuanlan.zhihu.com/p/80377698) 
+   - 使用基于上下文和基于时序 （没有找到，并且自己也没有好 idea）
+   - 基于对比，最小化InfoNCE 
 
-   <img src="http://image.zzzsleep.icu/202308221650167.jpeg" alt="img" style="zoom: 80%;" />
+$\mathcal{L}_{N}=-\mathbb{E}_{X}\left[\log\frac{\exp\left(f(x)^{T}f(x^{+})\right)}{\exp\left(f(x)^{T}f(x^{+})\right)+\sum_{j=1}^{N-1}\exp\left(f(x)^{T}f(x_{j})\right)}\right]$ 
 
-   - Encoder
-   - Embedding
-   - Decoder
-
-   ![image-20230822165520958](http://image.zzzsleep.icu/202308221655030.png)
-
-2. 表征学习 [什么是Representation Learning？](https://zhuanlan.zhihu.com/p/136554341) 
-
-   > 表征学习是利用机器学习获取每个实体或关系的向量化表达，以便在构建 分类器 或其他预测变量时更易提取有用信息的方法
-
-   **自监督学习，目前研究热点，关键在于如何设计有效的辅助任务 pretext**（辅助任务）
-
-   - Word2vec [[NLP] 秒懂词向量Word2vec的本质](https://zhuanlan.zhihu.com/p/26306795) 
-
-   - Word2vec [深入浅出Word2Vec原理解析](https://zhuanlan.zhihu.com/p/114538417) 
-
-     
-
-4. 对Bert进行fintune [【译】BERT Fine-Tuning 指南（with PyTorch）](https://zhuanlan.zhihu.com/p/143209797) 
-
-5. 掘金 fine tune [基于Bert预训练模型的文本分类fine tune](https://juejin.cn/post/7090382121813934088) 
-   - github issue [Why not freeze layers for finetuning?](https://github.com/ultralytics/yolov5/issues/1264)
-6. 
+5. 基于对比学习的自监督学习
+   - DIM 方法，设计全局特征与局部特征作为监督信号 （正样本是该图像的局部特征，负样本是其他图像的局部特征）
+   - CPC 思想，基于序列的对比 
 
 
 
-#### [解读自监督学习(Self-Supervised Learning)几篇相关paper](https://zhuanlan.zhihu.com/p/96748604)
-
-
-
-
-
-1. ~~[自己动手写word2vec (四):CBOW和skip-gram模型](https://blog.csdn.net/u014595019/article/details/51943428)~~
-2. [PyTorch实现Word2Vec](https://cloud.tencent.com/developer/article/1613950)~
-
-![](http://image.zzzsleep.icu/202308231118256.png)
-
-这是我生成的 LaTeX 代码，你可以用它来显示这个公式：
-
-�=1�∑�=1�log⁡�(��,�)=1�∑�=1�log⁡∑�=1�exp⁡(��(��))L=N1i=1∑NlogE(xi,f)=N1i=1∑Nlogj=1∑Kexp(fj(xi))
-
-你觉得这个代码准确吗？你还有什么其他的数学问题吗？🧮
