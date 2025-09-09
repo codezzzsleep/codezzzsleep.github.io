@@ -6,5 +6,6 @@
 * [算法](docs/算法/_sidebar.md)
 * [项目](docs/项目/_sidebar.md)
 * [ohter](docs/other/_sidebar.md)
+* [competi](competition.html)
 
   
