@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞赛数据看板</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #06ffa5;
+            --danger-color: #ff006e;
+            --warning-color: #ffbe0b;
+            --info-color: #00b4d8;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fb;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-weight: 600;
+            border-bottom: none;
+        }
+        
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.4em 0.6em;
+            border-radius: 6px;
+        }
+        
+        .status-active {
+            background-color: var(--success-color);
+            color: #000;
+        }
+        
+        .status-completed {
+            background-color: var(--info-color);
+            color: #fff;
+        }
+        
+        .status-closed {
+            background-color: var(--danger-color);
+            color: #fff;
+        }
+        
+        .status-upcoming {
+            background-color: var(--warning-color);
+            color: #000;
+        }
+        
+        .filter-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .competition-card {
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .competition-card .card-body {
+            padding: 20px;
+        }
+        
+        .competition-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .competition-meta {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .competition-tags {
+            margin-top: 15px;
+        }
+        
+        .competition-tag {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .deadline-badge {
+            background-color: #ffbe0b;
+            color: #000;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+        
+        .prize-badge {
+            background-color: #06ffa5;
+            color: #000;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .stats-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .chart-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding-left: 40px;
+            border-radius: 20px;
+            border: 1px solid #ced4da;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            color: #6c757d;
+        }
+        
+        .detail-modal .modal-content {
+            border-radius: 12px;
+        }
+        
+        .detail-modal .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .relevance-badge {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        
+        .relevance-video {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+        
+        .relevance-multimedia {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+        }
+        
+        .relevance-none {
+            background-color: #ffebee;
+            color: #b71c1c;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        
+        .api-error {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #dc3545;
+        }
+        
+        @media (max-width: 768px) {
+            .competition-card {
+                margin-bottom: 15px;
+            }
+            
+            .stats-card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-trophy-fill me-2"></i>竞赛数据看板
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" id="dashboardLink">
+                            <i class="bi bi-speedometer2 me-1"></i>看板
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="competitionsLink">
+                            <i class="bi bi-list-ul me-1"></i>竞赛列表
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="analyticsLink">
+                            <i class="bi bi-graph-up me-1"></i>数据分析
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="container mt-4">
+        <!-- 统计卡片 -->
+        <div class="row mb-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-card">
+                    <div class="stats-number" id="totalCompetitions">0</div>
+                    <div class="stats-label">总竞赛数</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-card">
+                    <div class="stats-number" id="activeCompetitions">0</div>
+                    <div class="stats-label">进行中</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-card">
+                    <div class="stats-number" id="completedCompetitions">0</div>
+                    <div class="stats-label">已完成</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-card">
+                    <div class="stats-number" id="upcomingCompetitions">0</div>
+                    <div class="stats-label">即将开始</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 筛选区域 -->
+        <div class="filter-section">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" class="form-control" id="searchInput" placeholder="搜索竞赛名称...">
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <select class="form-select" id="statusFilter">
+                        <option value="">所有状态</option>
+                        <option value="Active">进行中</option>
+                        <option value="Completed">已完成</option>
+                        <option value="Closed">已关闭</option>
+                        <option value="Upcoming">即将开始</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select class="form-select" id="relevanceFilter">
+                        <option value="">所有领域</option>
+                        <option value="视频质量评估">视频质量评估</option>
+                        <option value="Multimedia Security">多媒体安全</option>
+                        <option value="Multimedia Hashing & Retrieval">多媒体哈希与检索</option>
+                        <option value="None">不相关</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select class="form-select" id="sortBy">
+                        <option value="published_date-desc">发布日期 (最新)</option>
+                        <option value="published_date-asc">发布日期 (最早)</option>
+                        <option value="title-asc">标题 (A-Z)</option>
+                        <option value="title-desc">标题 (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据可视化区域 -->
+        <div class="row mb-4" id="chartsSection">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h5 class="mb-3">竞赛状态分布</h5>
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <h5 class="mb-3">核心领域分布</h5>
+                    <canvas id="relevanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 竞赛列表 -->
+        <div class="row">
+            <div class="col-12">
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">加载中...</span>
+                    </div>
+                    <p class="mt-2">正在从API加载数据...</p>
+                </div>
+                
+                <div class="api-error" id="apiError">
+                    <i class="bi bi-exclamation-triangle" style="font-size: 3rem;"></i>
+                    <h4 class="mt-3">数据加载失败</h4>
+                    <p>无法从API获取数据，请检查网络连接或稍后重试</p>
+                    <button class="btn btn-primary" onclick="loadCompetitionsData()">重新加载</button>
+                </div>
+                
+                <div class="no-results" id="noResults">
+                    <i class="bi bi-search" style="font-size: 3rem;"></i>
+                    <h4 class="mt-3">没有找到匹配的竞赛</h4>
+                    <p>请尝试调整筛选条件或搜索关键词</p>
+                </div>
+                
+                <div id="competitionsList"></div>
+                
+                <!-- 分页 -->
+                <div class="pagination-container">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination" id="pagination"></ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 竞赛详情模态框 -->
+    <div class="modal fade detail-modal" id="competitionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">竞赛详情</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- 竞赛详情内容 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <a href="#" class="btn btn-primary" id="modalLink" target="_blank">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 全局变量
+        let competitionsData = [];
+        let filteredData = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let statusChart, relevanceChart;
+        const API_URL = 'https://copmpetition.zzzsleep.eu.org/';
+
+        // 初始化函数
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载数据
+            loadCompetitionsData();
+            
+            // 绑定事件
+            document.getElementById('searchInput').addEventListener('input', filterCompetitions);
+            document.getElementById('statusFilter').addEventListener('change', filterCompetitions);
+            document.getElementById('relevanceFilter').addEventListener('change', filterCompetitions);
+            document.getElementById('sortBy').addEventListener('change', sortCompetitions);
+            
+            // 导航链接事件
+            document.getElementById('dashboardLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('chartsSection').style.display = 'flex';
+                renderCompetitions();
+            });
+            
+            document.getElementById('competitionsLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('chartsSection').style.display = 'none';
+                renderCompetitions();
+            });
+            
+            document.getElementById('analyticsLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('chartsSection').style.display = 'flex';
+                renderCompetitions();
+            });
+        });
+
+        // 从API加载竞赛数据
+        async function loadCompetitionsData() {
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const apiError = document.getElementById('apiError');
+            const competitionsList = document.getElementById('competitionsList');
+            
+            // 显示加载中
+            loadingSpinner.style.display = 'block';
+            apiError.style.display = 'none';
+            competitionsList.innerHTML = '';
+            
+            try {
+                const response = await fetch(API_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    competitionsData = data.data;
+                    filteredData = [...competitionsData];
+                    
+                    // 更新统计信息
+                    updateStatistics();
+                    
+                    // 渲染竞赛列表
+                    renderCompetitions();
+                    
+                    // 初始化图表
+                    initCharts();
+                } else {
+                    throw new Error('API返回的数据格式不正确');
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+                loadingSpinner.style.display = 'none';
+                apiError.style.display = 'block';
+            }
+        }
+
+        // 更新统计信息
+        function updateStatistics() {
+            document.getElementById('totalCompetitions').textContent = competitionsData.length;
+            
+            const activeCount = competitionsData.filter(c => 
+                c.status === 'Active' || c.status === 'active' || c.status === 'Started' || c.status === 'Ongoing'
+            ).length;
+            document.getElementById('activeCompetitions').textContent = activeCount;
+            
+            const completedCount = competitionsData.filter(c => 
+                c.status === 'Completed' || c.status === 'completed' || c.status === 'Winner' || c.status === '已结束' || c.status === '优胜奖报道' || c.status === '已举行' || c.status === '已完成' || c.status === '发布' || c.status === '圆满收官'
+            ).length;
+            document.getElementById('completedCompetitions').textContent = completedCount;
+            
+            const upcomingCount = competitionsData.filter(c => 
+                c.status === 'Upcoming' || c.status === '启动通知' || c.status === '启动'
+            ).length;
+            document.getElementById('upcomingCompetitions').textContent = upcomingCount;
+        }
+
+        // 初始化图表
+        function initCharts() {
+            // 状态分布图表
+            const statusCtx = document.getElementById('statusChart').getContext('2d');
+            const statusData = {
+                labels: ['进行中', '已完成', '即将开始', '其他'],
+                datasets: [{
+                    data: [
+                        competitionsData.filter(c => 
+                            c.status === 'Active' || c.status === 'active' || c.status === 'Started' || c.status === 'Ongoing'
+                        ).length,
+                        competitionsData.filter(c => 
+                            c.status === 'Completed' || c.status === 'completed' || c.status === 'Winner' || c.status === '已结束' || c.status === '优胜奖报道' || c.status === '已举行' || c.status === '已完成' || c.status === '发布' || c.status === '圆满收官'
+                        ).length,
+                        competitionsData.filter(c => 
+                            c.status === 'Upcoming' || c.status === '启动通知' || c.status === '启动'
+                        ).length,
+                        competitionsData.filter(c => 
+                            c.status === 'Closed' || c.status === 'closed' || c.status === 'Closed'
+                        ).length
+                    ],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            
+            statusChart = new Chart(statusCtx, {
+                type: 'doughnut',
+                data: statusData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // 核心领域分布图表
+            const relevanceCtx = document.getElementById('relevanceChart').getContext('2d');
+            const relevanceData = {
+                labels: ['视频质量评估', '多媒体安全', '多媒体哈希与检索', '不相关'],
+                datasets: [{
+                    data: [
+                        competitionsData.filter(c => 
+                            c.relevance && c.relevance.core_area && (
+                                c.relevance.core_area.includes('视频质量评估') || 
+                                c.relevance.core_area.includes('Video Quality Assessment') ||
+                                c.relevance.core_area.includes('Image/Video Quality Assessment')
+                            )
+                        ).length,
+                        competitionsData.filter(c => 
+                            c.relevance && c.relevance.core_area && (
+                                c.relevance.core_area.includes('多媒体安全') || 
+                                c.relevance.core_area.includes('Multimedia Security') ||
+                                c.relevance.core_area.includes('Multimedia Information Security')
+                            )
+                        ).length,
+                        competitionsData.filter(c => 
+                            c.relevance && c.relevance.core_area && (
+                                c.relevance.core_area.includes('多媒体哈希') || 
+                                c.relevance.core_area.includes('Multimedia Hashing') ||
+                                c.relevance.core_area.includes('多媒体哈希')
+                            )
+                        ).length,
+                        competitionsData.filter(c => 
+                            c.relevance && c.relevance.core_area && c.relevance.core_area === 'None'
+                        ).length
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            
+            relevanceChart = new Chart(relevanceCtx, {
+                type: 'pie',
+                data: relevanceData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        title: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // 筛选竞赛
+        function filterCompetitions() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const relevanceFilter = document.getElementById('relevanceFilter').value;
+            
+            filteredData = competitionsData.filter(competition => {
+                // 搜索筛选
+                const matchesSearch = !searchTerm || 
+                    competition.title.toLowerCase().includes(searchTerm) || 
+                    (competition.summary_ai && competition.summary_ai.toLowerCase().includes(searchTerm));
+                
+                // 状态筛选
+                let matchesStatus = !statusFilter;
+                if (statusFilter) {
+                    if (statusFilter === 'Active') {
+                        matchesStatus = competition.status === 'Active' || competition.status === 'active' || competition.status === 'Started' || competition.status === 'Ongoing';
+                    } else if (statusFilter === 'Completed') {
+                        matchesStatus = competition.status === 'Completed' || competition.status === 'completed' || competition.status === 'Winner' || competition.status === '已结束' || competition.status === '优胜奖报道' || competition.status === '已举行' || competition.status === '已完成' || competition.status === '发布' || competition.status === '圆满收官';
+                    } else if (statusFilter === 'Closed') {
+                        matchesStatus = competition.status === 'Closed' || competition.status === 'closed';
+                    } else if (statusFilter === 'Upcoming') {
+                        matchesStatus = competition.status === 'Upcoming' || competition.status === '启动通知' || competition.status === '启动';
+                    }
+                }
+                
+                // 相关性筛选
+                let matchesRelevance = !relevanceFilter;
+                if (relevanceFilter && competition.relevance && competition.relevance.core_area) {
+                    matchesRelevance = competition.relevance.core_area.includes(relevanceFilter);
+                }
+                
+                return matchesSearch && matchesStatus && matchesRelevance;
+            });
+            
+            // 重置页码
+            currentPage = 1;
+            
+            // 应用排序
+            sortCompetitions();
+        }
+
+        // 排序竞赛
+        function sortCompetitions() {
+            const sortBy = document.getElementById('sortBy').value;
+            const [field, order] = sortBy.split('-');
+            
+            filteredData.sort((a, b) => {
+                let valueA, valueB;
+                
+                if (field === 'published_date') {
+                    valueA = new Date(a.published_date);
+                    valueB = new Date(b.published_date);
+                } else if (field === 'title') {
+                    valueA = a.title.toLowerCase();
+                    valueB = b.title.toLowerCase();
+                }
+                
+                if (order === 'asc') {
+                    return valueA > valueB ? 1 : -1;
+                } else {
+                    return valueA < valueB ? 1 : -1;
+                }
+            });
+            
+            // 重新渲染列表
+            renderCompetitions();
+        }
+
+        // 渲染竞赛列表
+        function renderCompetitions() {
+            const competitionsList = document.getElementById('competitionsList');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const noResults = document.getElementById('noResults');
+            const apiError = document.getElementById('apiError');
+            
+            // 隐藏加载和错误提示
+            loadingSpinner.style.display = 'none';
+            apiError.style.display = 'none';
+            competitionsList.innerHTML = '';
+            noResults.style.display = 'none';
+            
+            // 检查是否有结果
+            if (filteredData.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            // 计算分页
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedData = filteredData.slice(startIndex, endIndex);
+            
+            // 渲染竞赛卡片
+            paginatedData.forEach(competition => {
+                const card = createCompetitionCard(competition);
+                competitionsList.appendChild(card);
+            });
+            
+            // 渲染分页
+            renderPagination();
+        }
+
+        // 创建竞赛卡片
+        function createCompetitionCard(competition) {
+            const card = document.createElement('div');
+            card.className = 'col-12 competition-card';
+            
+            // 确定状态样式
+            let statusClass = '';
+            let statusText = competition.status;
+            
+            if (competition.status === 'Active' || competition.status === 'active' || competition.status === 'Started' || competition.status === 'Ongoing') {
+                statusClass = 'status-active';
+                statusText = '进行中';
+            } else if (competition.status === 'Completed' || competition.status === 'completed' || competition.status === 'Winner' || competition.status === '已结束' || competition.status === '优胜奖报道' || competition.status === '已举行' || competition.status === '已完成' || competition.status === '发布' || competition.status === '圆满收官') {
+                statusClass = 'status-completed';
+                statusText = '已完成';
+            } else if (competition.status === 'Closed' || competition.status === 'closed') {
+                statusClass = 'status-closed';
+                statusText = '已关闭';
+            } else if (competition.status === 'Upcoming' || competition.status === '启动通知' || competition.status === '启动') {
+                statusClass = 'status-upcoming';
+                statusText = '即将开始';
+            }
+            
+            // 确定相关性样式
+            let relevanceClass = '';
+            let relevanceText = '';
+            
+            if (competition.relevance && competition.relevance.core_area) {
+                if (competition.relevance.core_area.includes('视频质量评估') || competition.relevance.core_area.includes('Video Quality Assessment') || competition.relevance.core_area.includes('Image/Video Quality Assessment')) {
+                    relevanceClass = 'relevance-video';
+                    relevanceText = '视频质量评估';
+                } else if (competition.relevance.core_area.includes('多媒体安全') || competition.relevance.core_area.includes('Multimedia Security') || competition.relevance.core_area.includes('Multimedia Information Security')) {
+                    relevanceClass = 'relevance-multimedia';
+                    relevanceText = '多媒体安全';
+                } else if (competition.relevance.core_area.includes('多媒体哈希') || competition.relevance.core_area.includes('Multimedia Hashing')) {
+                    relevanceClass = 'relevance-multimedia';
+                    relevanceText = '多媒体哈希';
+                } else if (competition.relevance.core_area === 'None') {
+                    relevanceClass = 'relevance-none';
+                    relevanceText = '不相关';
+                }
+            }
+            
+            // 处理截止日期
+            let deadlineHtml = '';
+            if (competition.deadlines && competition.deadlines.submission && competition.deadlines.submission !== 'Not specified in the snippet') {
+                deadlineHtml = `<span class="deadline-badge"><i class="bi bi-calendar-event me-1"></i>截止: ${competition.deadlines.submission}</span>`;
+            } else if (competition.deadlines && competition.deadlines.end) {
+                deadlineHtml = `<span class="deadline-badge"><i class="bi bi-calendar-event me-1"></i>截止: ${competition.deadlines.end}</span>`;
+            }
+            
+            // 处理奖金
+            let prizeHtml = '';
+            if (competition.prize && competition.prize !== 'Not specified' && competition.prize !== 'Not specified in the snippet' && competition.prize !== '') {
+                prizeHtml = `<span class="prize-badge"><i class="bi bi-trophy me-1"></i>奖金: ${competition.prize}</span>`;
+            }
+            
+            // 处理标签
+            let tagsHtml = '';
+            if (competition.tags_ai && competition.tags_ai.length > 0) {
+                tagsHtml = competition.tags_ai.map(tag => 
+                    `<span class="competition-tag">${tag}</span>`
+                ).join('');
+            }
+            
+            card.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="competition-title">${competition.title}</h5>
+                            <span class="badge ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="competition-meta">
+                            <i class="bi bi-calendar3 me-1"></i>发布日期: ${competition.published_date}
+                            ${deadlineHtml}
+                            ${prizeHtml}
+                            ${relevanceText ? `<span class="relevance-badge ${relevanceClass}">${relevanceText}</span>` : ''}
+                        </div>
+                        <p class="card-text">${competition.summary_ai || '暂无摘要'}</p>
+                        <div class="competition-tags">
+                            ${tagsHtml}
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-sm btn-outline-primary" onclick="showCompetitionDetail('${competition.id}')">
+                                <i class="bi bi-eye me-1"></i>查看详情
+                            </button>
+                            <a href="${competition.url}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-box-arrow-up-right me-1"></i>访问链接
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // 渲染分页
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            
+            if (totalPages <= 1) return;
+            
+            // 上一页
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous" onclick="changePage(${currentPage - 1}); return false;">
+                <span aria-hidden="true">&laquo;</span>
+            </a>`;
+            pagination.appendChild(prevLi);
+            
+            // 页码
+            for (let i = 1; i <= totalPages; i++) {
+                // 如果页码太多，只显示当前页附近的页码
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    const li = document.createElement('li');
+                    li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                    li.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>`;
+                    pagination.appendChild(li);
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    const li = document.createElement('li');
+                    li.className = 'page-item disabled';
+                    li.innerHTML = `<a class="page-link" href="#">...</a>`;
+                    pagination.appendChild(li);
+                }
+            }
+            
+            // 下一页
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next" onclick="changePage(${currentPage + 1}); return false;">
+                <span aria-hidden="true">&raquo;</span>
+            </a>`;
+            pagination.appendChild(nextLi);
+        }
+
+        // 切换页码
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            
+            currentPage = page;
+            renderCompetitions();
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+
+        // 显示竞赛详情
+        function showCompetitionDetail(competitionId) {
+            const competition = competitionsData.find(c => c.id === competitionId);
+            if (!competition) return;
+            
+            // 确定状态样式
+            let statusClass = '';
+            let statusText = competition.status;
+            
+            if (competition.status === 'Active' || competition.status === 'active' || competition.status === 'Started' || competition.status === 'Ongoing') {
+                statusClass = 'status-active';
+                statusText = '进行中';
+            } else if (competition.status === 'Completed' || competition.status === 'completed' || competition.status === 'Winner' || competition.status === '已结束' || competition.status === '优胜奖报道' || competition.status === '已举行' || competition.status === '已完成' || competition.status === '发布' || competition.status === '圆满收官') {
+                statusClass = 'status-completed';
+                statusText = '已完成';
+            } else if (competition.status === 'Closed' || competition.status === 'closed') {
+                statusClass = 'status-closed';
+                statusText = '已关闭';
+            } else if (competition.status === 'Upcoming' || competition.status === '启动通知' || competition.status === '启动') {
+                statusClass = 'status-upcoming';
+                statusText = '即将开始';
+            }
+            
+            // 处理截止日期
+            let deadlineHtml = '<p><strong>截止日期:</strong> 未指定</p>';
+            if (competition.deadlines) {
+                const deadlines = [];
+                if (competition.deadlines.submission && competition.deadlines.submission !== 'Not specified in the snippet') {
+                    deadlines.push(`提交: ${competition.deadlines.submission}`);
+                }
+                if (competition.deadlines.registration && competition.deadlines.registration !== 'Not specified') {
+                    deadlines.push(`注册: ${competition.deadlines.registration}`);
+                }
+                if (competition.deadlines.announcement && competition.deadlines.announcement !== 'Not specified') {
+                    deadlines.push(`公布: ${competition.deadlines.announcement}`);
+                }
+                if (competition.deadlines.start && competition.deadlines.start !== 'Not specified') {
+                    deadlines.push(`开始: ${competition.deadlines.start}`);
+                }
+                if (competition.deadlines.end && competition.deadlines.end !== 'Not specified') {
+                    deadlines.push(`结束: ${competition.deadlines.end}`);
+                }
+                
+                if (deadlines.length > 0) {
+                    deadlineHtml = `<p><strong>截止日期:</strong> ${deadlines.join(', ')}</p>`;
+                }
+            }
+            
+            // 处理奖金
+            let prizeHtml = '<p><strong>奖金:</strong> 未指定</p>';
+            if (competition.prize && competition.prize !== 'Not specified' && competition.prize !== 'Not specified in the snippet' && competition.prize !== '') {
+                prizeHtml = `<p><strong>奖金:</strong> ${competition.prize}</p>`;
+            }
+            
+            // 处理标签
+            let tagsHtml = '';
+            if (competition.tags_ai && competition.tags_ai.length > 0) {
+                tagsHtml = competition.tags_ai.map(tag => 
+                    `<span class="competition-tag">${tag}</span>`
+                ).join('');
+            }
+            
+            // 处理相关性
+            let relevanceHtml = '';
+            if (competition.relevance) {
+                relevanceHtml = `
+                    <div class="mb-3">
+                        <h6>相关性信息</h6>
+                        <p><strong>核心领域:</strong> ${competition.relevance.core_area || '未指定'}</p>
+                        <p><strong>是否相关:</strong> ${competition.relevance.is_relevant ? '是' : '否'}</p>
+                        <p><strong>原因:</strong> ${competition.relevance.reason || '未指定'}</p>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('modalTitle').textContent = competition.title;
+            document.getElementById('modalBody').innerHTML = `
+                <div class="mb-3">
+                    <span class="badge ${statusClass}">${statusText}</span>
+                </div>
+                <p><strong>发布日期:</strong> ${competition.published_date}</p>
+                ${deadlineHtml}
+                ${prizeHtml}
+                <div class="mb-3">
+                    <h6>摘要</h6>
+                    <p>${competition.summary_ai || '暂无摘要'}</p>
+                </div>
+                ${relevanceHtml}
+                <div class="mb-3">
+                    <h6>标签</h6>
+                    <div>${tagsHtml || '<span>无标签</span>'}</div>
+                </div>
+                <div class="mb-3">
+                    <h6>来源</h6>
+                    <p>${competition.source}</p>
+                </div>
+            `;
+            document.getElementById('modalLink').href = competition.url;
+            
+            // 显示模态框
+            const modal = new bootstrap.Modal(document.getElementById('competitionModal'));
+            modal.show();
+        }
+    </script>
+</body>
+</html>
