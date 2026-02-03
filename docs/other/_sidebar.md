@@ -10,6 +10,8 @@
 
   - [软件](docs/other/soft.md)
   - [开发小tips](docs/other/开发小tips.md)
+  - [chatgpt team](docs/other/jsCode.md)
   - [chatgpt-demo 使用netfily 部署](docs/other/chatgpt-demo 使用netfily 部署失败.md)
+  - 
   
   
