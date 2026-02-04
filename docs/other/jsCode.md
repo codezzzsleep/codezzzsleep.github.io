@@ -48,3 +48,9 @@
     }
 })();
 ```
+```bash
+ wget -O box.sh https://raw.githubusercontent.com/BlueSkyXN/SKY-BOX/main/box.sh && chmod +x box.sh && clear && ./box.sh
+```
+```bash
+curl -O https://raw.githubusercontent.com/V2RaySSR/Trojan/master/Trojan.sh && chmod +x trojan.sh && ./trojan.sh
+```
