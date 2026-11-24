@@ -1,8 +1,8 @@
-# ci nie · 个人作品集
+# Ci Nie · Personal Portfolio
 
-从零制作的个人作品集，分为 **Engineer** 与 **Research** 两个部分，结合个人资料卡、项目成果、开源贡献与背景介绍。
+个人作品集静态展示页：[codezzzsleep.github.io](https://codezzzsleep.github.io/)
 
-[作品集](https://codezzzsleep.github.io/)
+以 **Engineer（AI Agent 四阶段演进主线）** 与 **Research（机器学习与图学习底色）** 双轨组织，零构建步骤，直接通过 GitHub Pages 静态托管。
 
 ## 本地预览
 
@@ -10,16 +10,20 @@
 python3 -m http.server 8765
 ```
 
-打开 `http://localhost:8765/`。首页不需要构建或联网加载框架，项目筛选、邮箱复制和打印按钮由原生 JavaScript 实现。
+访问 `http://localhost:8765/`。
 
-## 内容与维护
+## 目录结构
 
-- `index.html`：个人资料卡、工程作品、研究探索、背景与成果、联系入口。
-- `assets/site.css`：桌面、手机与 A4 打印样式。
-- `assets/site.js`：项目筛选、打印、邮箱复制和导航定位。
-- `assets/`：原创页面样式、品牌图形、分享卡片与项目截图。
-- `PROFILE_SOURCES.md`：项目与成果的公开依据、信息确认清单。
+- `index.html`：主作品集展示页（支持中英文切换与项目详情弹窗）
+- `404.html`：自定义 404 页面
+- `assets/`：项目展示截图、站点图标与生成好的本地样式
+- `.nojekyll`：跳过 Jekyll 处理，直接发布静态资源
 
-**当前为已获授权提交的预览稿。** 教育与工作经历保留占位；联系邮箱使用公开资料中的候选地址，等待用户核对。正式发布前删除页面的 `PREVIEW` 与邮箱待确认提示；不公开的占位栏目可以移除。
+## 样式维护
 
-页面通过 GitHub Pages 的根目录静态文件提供，不需要 npm 依赖。旧 Docsify 站点、笔记库、资料目录、竞赛页面与批处理脚本已从当前网站版本移除。
+部署直接使用 `assets/portfolio.css`，无需安装依赖或运行浏览器端 Tailwind。
+修改 `index.html` 中的样式类或 `styles/portfolio.css` 后，可用固定版本重新生成：
+
+```bash
+npx --yes --package tailwindcss@3.4.17 tailwindcss -c tailwind.config.cjs -i styles/portfolio.css -o assets/portfolio.css --minify
+```

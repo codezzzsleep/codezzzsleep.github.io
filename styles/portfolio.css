@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+    :root { color-scheme: light; }
+    body {
+      background-color: #FAF9F6;
+      color: #141416;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .story-card {
+      transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1), border-color 240ms ease;
+    }
+    .story-card:hover {
+      transform: translateY(-2px);
+      border-color: #CFCBC1;
+      box-shadow: 0 20px 44px -26px rgba(20, 20, 22, 0.22);
+    }
+    .story-card:hover .story-img {
+      transform: scale(1.02);
+    }
+    .story-img {
+      transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-link[aria-current="true"] {
+      color: #141416;
+      font-weight: 600;
+    }
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+    }
+    .modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-panel {
+      transform: translateY(14px) scale(0.985);
+      transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .modal-backdrop.is-open .modal-panel {
+      transform: translateY(0) scale(1);
+    }
+    .toast-bar {
+      transform: translate(-50%, 16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease;
+    }
+    .toast-bar.is-visible {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    [hidden] { display: none !important; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1D4ED8;
+      outline-offset: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+    @media print {
+      body { background: white; }
+      header, #project-modal, #toast, [data-copy-email] { display: none !important; }
+      h2, h3 { break-after: avoid; }
+      article { break-inside: avoid; box-shadow: none !important; }
+    }
