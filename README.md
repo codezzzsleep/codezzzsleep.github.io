@@ -2,7 +2,7 @@
 
 个人作品集静态展示页：[codezzzsleep.github.io](https://codezzzsleep.github.io/)
 
-以 **Engineer（AI Agent 四阶段演进主线）** 与 **Research（机器学习与图学习底色）** 双轨组织，零构建步骤，直接通过 GitHub Pages 静态托管。
+以 **Engineer（AI Agent 四阶段演进主线）** 与 **Research（研究方向与原创工作流工具）** 双轨组织，零构建步骤，直接通过 GitHub Pages 静态托管。
 
 ## 本地预览
 
