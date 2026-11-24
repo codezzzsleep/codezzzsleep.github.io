@@ -1,2 +1,25 @@
-# [Click](https://codezzzsleep.github.io/#/)
-![1675587425997](resource/1675587425997.png)
+# ci nie · 个人作品集
+
+从零制作的个人作品集，分为 **Engineer** 与 **Research** 两个部分，结合个人资料卡、项目成果、开源贡献与背景介绍。
+
+[作品集](https://codezzzsleep.github.io/)
+
+## 本地预览
+
+```bash
+python3 -m http.server 8765
+```
+
+打开 `http://localhost:8765/`。首页不需要构建或联网加载框架，项目筛选、邮箱复制和打印按钮由原生 JavaScript 实现。
+
+## 内容与维护
+
+- `index.html`：个人资料卡、工程作品、研究探索、背景与成果、联系入口。
+- `assets/site.css`：桌面、手机与 A4 打印样式。
+- `assets/site.js`：项目筛选、打印、邮箱复制和导航定位。
+- `assets/`：原创页面样式、品牌图形、分享卡片与项目截图。
+- `PROFILE_SOURCES.md`：项目与成果的公开依据、信息确认清单。
+
+**当前为已获授权提交的预览稿。** 教育与工作经历保留占位；联系邮箱使用公开资料中的候选地址，等待用户核对。正式发布前删除页面的 `PREVIEW` 与邮箱待确认提示；不公开的占位栏目可以移除。
+
+页面通过 GitHub Pages 的根目录静态文件提供，不需要 npm 依赖。旧 Docsify 站点、笔记库、资料目录、竞赛页面与批处理脚本已从当前网站版本移除。
