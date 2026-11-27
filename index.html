@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/portfolio.css" />
+  <link rel="stylesheet" href="assets/portfolio.css?v=63063b0d" />
 </head>
 <body class="font-sans selection:bg-cobalt/15 selection:text-cobalt">
 
@@ -106,7 +106,7 @@
         <a href="#act-4" class="group p-5 hover:bg-subtle/50 transition-colors sm:border-t sm:border-l sm:border-hairline lg:border-t-0 lg:border-l-0 last:rounded-b-2xl lg:last:rounded-r-2xl lg:last:rounded-bl-none">
           <p class="font-mono text-[11px] text-cobalt">ACT 04</p>
           <p class="mt-2 text-[15px] font-semibold text-ink group-hover:text-cobalt transition-colors" data-i18n="map.a4Title">科学、具身与下一代 OS</p>
-          <p class="mt-1 text-[12.5px] leading-relaxed text-muted" data-i18n="map.a4Sub">BeforeStep · Agentic Observer</p>
+          <p class="mt-1 text-[12.5px] leading-relaxed text-muted" data-i18n="map.a4Sub">BeforeStep 全球 Top 50 · Agentic Observer</p>
         </a>
       </div>
     </section>
@@ -214,7 +214,8 @@
             </p>
           </div>
 
-          <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2" id="slot-act-4"></div>
+          <div id="beforestep" class="mt-6 scroll-mt-24"></div>
+          <div id="slot-act-4-observer" class="mt-6"></div>
 
           <!-- Voice-first OS & Spatial Computing Horizon Banner -->
           <div class="mt-6 rounded-2xl border border-hairline bg-ink p-6 sm:p-8 text-white flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
@@ -373,7 +374,7 @@
           'map.a3Title': 'Personal Agent 共建',
           'map.a3Sub': 'WebDCC · Project Memory · SoduWork',
           'map.a4Title': '科学、具身与下一代 OS',
-          'map.a4Sub': 'BeforeStep · Agentic Observer',
+          'map.a4Sub': 'BeforeStep 全球 Top 50 · Agentic Observer',
           'eng.heading': 'AI Agent 工程主线',
           'eng.hint': '只收录主线上的关键节点 · 点击作品可查看完整细节',
           'act1.kicker': 'STAGE 01 · 垂直任务与 HARNESS',
@@ -430,7 +431,7 @@
           'map.a3Title': 'Personal Agent & OSS',
           'map.a3Sub': 'WebDCC · Project Memory · SoduWork',
           'map.a4Title': 'Science & Embodied',
-          'map.a4Sub': 'BeforeStep · Agentic Observer',
+          'map.a4Sub': 'BeforeStep Global Top 50 · Agentic Observer',
           'eng.heading': 'The AI Agent Engineering Thread',
           'eng.hint': 'Only milestone works that belong to the thread · Click any card to inspect',
           'act1.kicker': 'STAGE 01 · VERTICAL DOMAIN HARNESS',
@@ -567,15 +568,15 @@
         beforestep: {
           id: 'beforestep',
           kicker: 'ACT 04 · EMBODIED SPATIAL SIMULATION',
-          badge: { zh: '入选 Aholo Top 50', en: 'Aholo Top 50', tone: 'emerald' },
+          badge: { zh: '全球 Top 50', en: 'Global Top 50', tone: 'emerald' },
           title: { zh: 'BeforeStep · 先见一步', en: 'BeforeStep' },
           tagline: {
             zh: 'Aholo Lux3D 局部空间先验 + MuJoCo 多世界物理预演的轮腿机器人导航',
             en: 'Lux3D 3D spatial priors + MuJoCo multi-world rehearsal for wheel-legged robots'
           },
           summary: {
-            zh: '面向月球南极 10° 低角度斜阳与岩石遮挡场景，将单图 3D 先验接入 MuJoCo 物理预演闭环，让轮腿机器人在看不见障碍背面时先推演、再跨越，并提供浏览器在线四站试玩。',
-            en: 'Under lunar south-pole 10° low-sun rock occlusion, feeds Lux3D single-view 3D priors into a MuJoCo multi-world rehearsal loop so a wheel-legged robot predicts unseen geometry before acting.'
+            zh: '在模拟月球南极的低角度日照与岩石遮挡下，轮腿机器人用 Lux3D 从单张图像建立对遮挡地形的假设，再用 MuJoCo 在不同地形假设下预演跨越动作。',
+            en: 'In a simulated lunar south-pole landscape, a wheel-legged robot uses Lux3D to infer hidden terrain from a single image and rehearses crossings in MuJoCo across several plausible 3D scenes.'
           },
           image: 'assets/beforestep.jpg',
           imageFit: 'cover',
@@ -585,12 +586,17 @@
           },
           evidence: {
             zh: ['Next Zenith 团队的「先见一步」入选群核科技 Aholo 全球 3D AI 黑客松 Top 50', '在线四站试玩页面、V5 Beta 项目报告与 B 站宣传视频完整公开', '主仓保留完整源码与实验脚本，展示资产独立解耦部署'],
-            en: ['Selected for the Aholo Global 3D AI Hackathon Top 50 as team Next Zenith', 'Live 4-station browser demo, V5 Beta report, and Bilibili showcase video', 'Full source and experimental scripts open-sourced on GitHub']
+            en: ['Team Next Zenith’s BeforeStep was selected for the Global Top 50 at the Aholo 3D AI Hackathon', 'Live 4-station browser demo, V5 Beta report, and Bilibili showcase video', 'Full source and experimental scripts open-sourced on GitHub']
           },
           tags: ['Python', 'MuJoCo', 'Lux3D', 'Embodied AI'],
           links: [
             { label: { zh: '在线驾驶试玩', en: 'Play Demo' }, url: 'https://codezzzsleep.github.io/next-zenith-beforestep/play.html', primary: true },
-            { label: { zh: 'Aholo 官方 Top 50 名单', en: 'Official Aholo Top 50' }, url: 'https://www.aholo.cn/hackathon/top50' },
+            {
+              label: { zh: '官方入选名单', en: 'Official Selection' },
+              url: 'https://www.aholo.cn/hackathon/top50',
+              event: { zh: '群核科技 Aholo 全球 3D AI 黑客松', en: 'Aholo Global 3D AI Hackathon' },
+              team: 'Next Zenith'
+            },
             { label: { zh: 'B 站视频', en: 'Video' }, url: 'https://www.bilibili.com/video/BV1YZst6eEZk/' },
             { label: { zh: 'GitHub 源码', en: 'GitHub' }, url: 'https://github.com/codezzzsleep/next-zenith-beforestep' }
           ]
@@ -647,6 +653,20 @@
 
       function renderWideCard(w) {
         const primary = w.links[0];
+        const selection = w.links.find(link => link.event);
+        const title = `<h4 class="mt-3.5 text-[22px] font-semibold text-ink group-hover:text-cobalt transition-colors">${w.title[lang]}</h4>`;
+        const heading = selection ? `
+          <p class="font-serif text-[32px] leading-snug text-ink">${w.badge[lang]}</p>
+          <p class="mt-1 text-[13.5px] leading-[1.7] text-muted">${selection.event[lang]} · ${selection.team}</p>
+          ${title}
+        ` : `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="font-mono text-[10.5px] uppercase tracking-wider text-faint">${w.kicker}</span>
+            <span class="rounded-full px-2.5 py-0.5 text-[11px] font-medium ${badgeClass(w.badge.tone)}">${w.badge[lang]}</span>
+          </div>
+          ${title}
+          <p class="mt-1.5 text-[14px] font-medium text-ink/80">${w.tagline[lang]}</p>
+        `;
         return `
           <article data-open-modal="${w.id}" class="story-card group cursor-pointer overflow-hidden rounded-2xl border border-hairline bg-surface grid grid-cols-1 lg:grid-cols-12">
             <div class="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-hairline overflow-hidden bg-subtle">
@@ -656,19 +676,15 @@
             </div>
             <div class="lg:col-span-6 flex flex-col justify-between p-6 sm:p-7">
               <div>
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                  <span class="font-mono text-[10.5px] uppercase tracking-wider text-faint">${w.kicker}</span>
-                  <span class="rounded-full px-2.5 py-0.5 text-[11px] font-medium ${badgeClass(w.badge.tone)}">${w.badge[lang]}</span>
-                </div>
-                <h4 class="mt-3.5 text-[22px] font-semibold tracking-tight text-ink group-hover:text-cobalt transition-colors">${w.title[lang]}</h4>
-                <p class="mt-1.5 text-[14px] font-medium text-ink/80">${w.tagline[lang]}</p>
-                <p class="mt-2.5 text-[13.5px] leading-[1.7] text-muted">${w.summary[lang]}</p>
-                <div class="mt-4 flex flex-wrap gap-1.5">
+                ${heading}
+                <p class="mt-2.5 text-[14px] leading-[1.75] text-muted">${w.summary[lang]}</p>
+                ${selection ? '' : `<div class="mt-4 flex flex-wrap gap-1.5">
                   ${w.tags.map(t => `<span class="rounded-md bg-subtle px-2 py-0.5 font-mono text-[11px] text-muted">${t}</span>`).join('')}
-                </div>
+                </div>`}
               </div>
-              <div class="mt-6 pt-4 border-t border-hairline flex items-center justify-between gap-3">
+              <div class="mt-6 pt-4 border-t border-hairline flex flex-wrap items-center justify-between gap-3">
                 <button type="button" data-open-modal="${w.id}" aria-haspopup="dialog" aria-controls="project-modal" aria-label="${I18N[lang]['card.details']}: ${w.title[lang]}" class="text-left text-[13px] font-medium text-ink group-hover:text-cobalt transition-colors">${I18N[lang]['card.details']} →</button>
+                ${selection ? `<a href="${selection.url}" target="_blank" rel="noopener noreferrer" data-stop-prop class="text-[13px] font-medium text-cobalt hover:underline">${selection.label[lang]} <span aria-hidden="true">↗</span></a>` : ''}
                 <a href="${primary.url}" target="_blank" rel="noopener noreferrer" data-stop-prop class="inline-flex items-center gap-1 rounded-full border border-hairline bg-canvas px-3 py-1 text-[12px] font-medium text-ink hover:border-ink/40 transition-colors">
                   ${primary.label[lang]} ↗
                 </a>
@@ -714,7 +730,8 @@
         document.getElementById('slot-act-1').innerHTML = renderWideCard(WORKS.mineru);
         document.getElementById('slot-act-2').innerHTML = renderWideCard(WORKS.oncue);
         document.getElementById('slot-act-3-webdcc').innerHTML = renderCompactCard(WORKS.webdcc);
-        document.getElementById('slot-act-4').innerHTML = renderCompactCard(WORKS.beforestep) + renderCompactCard(WORKS.observer);
+        document.getElementById('beforestep').innerHTML = renderWideCard(WORKS.beforestep);
+        document.getElementById('slot-act-4-observer').innerHTML = renderWideCard(WORKS.observer);
       }
 
       function applyLanguage() {
