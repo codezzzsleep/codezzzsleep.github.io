@@ -101,7 +101,7 @@
         <a href="#act-3" class="group p-5 hover:bg-subtle/50 transition-colors sm:border-t sm:border-hairline lg:border-t-0">
           <p class="font-mono text-[11px] text-cobalt">ACT 03</p>
           <p class="mt-2 text-[15px] font-semibold text-ink group-hover:text-cobalt transition-colors" data-i18n="map.a3Title">Personal Agent 共建</p>
-          <p class="mt-1 text-[12.5px] leading-relaxed text-muted" data-i18n="map.a3Sub">WebDCC · SoduWork 23 PRs</p>
+          <p class="mt-1 text-[12.5px] leading-relaxed text-muted" data-i18n="map.a3Sub">WebDCC · Project Memory · SoduWork</p>
         </a>
         <a href="#act-4" class="group p-5 hover:bg-subtle/50 transition-colors sm:border-t sm:border-l sm:border-hairline lg:border-t-0 lg:border-l-0 last:rounded-b-2xl lg:last:rounded-r-2xl lg:last:rounded-bl-none">
           <p class="font-mono text-[11px] text-cobalt">ACT 04</p>
@@ -161,7 +161,7 @@
             <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-cobalt" data-i18n="act3.kicker">STAGE 03 · PERSONAL AGENT 与开源共建</p>
             <h3 class="mt-2 text-[22px] font-semibold tracking-tight text-ink sm:text-[26px]" data-i18n="act3.title">Personal Agent 成为日常后，我造自己的工作台，也在高星社区里修真实问题。</h3>
             <p class="mt-3 text-[15px] leading-[1.8] text-muted" data-i18n="act3.story">
-              随着 DeepSeek Harness 与 Super-agent 让 Personal Agent 进入大众视野，真正限制效率的是多会话、多 Agent 并行时的交互与控制权。我先从自身真实使用出发，从零开源了统一网页工作台 <strong class="font-medium text-ink">WebDCC</strong>，原汁原味平级驱动 DeepSeek Harness、Codex 与 Claude Code；同时作为外部贡献者持续参与开源项目 <strong class="font-medium text-ink">SoduWork</strong>（7.5k+ ★），已累计合并 23 个 PR，深入会话状态、权限回归门禁与桌面端稳定性修复。
+              随着 Personal Agent 进入日常工程，我开源了统一网页工作台 <strong class="font-medium text-ink">WebDCC</strong>，保留 DeepSeek Harness、Codex 与 Claude Code 的原生交互。我也开发了 <strong class="font-medium text-ink">Project Memory Skill</strong>，让 Agent 能在换会话后恢复多项目工作。作为外部贡献者，我在 <strong class="font-medium text-ink">SoduWork</strong> 的 PR 已有 31 个合并。
             </p>
           </div>
 
@@ -171,16 +171,16 @@
               <div>
                 <div class="flex flex-wrap items-center justify-between gap-2">
                   <span class="font-mono text-[11px] uppercase tracking-wider text-cobalt">OPEN SOURCE CO-BUILD</span>
-                  <span class="rounded-full bg-subtle px-2.5 py-0.5 font-mono text-[11px] font-medium text-ink">★ 7.5k+ · 23 Merged PRs</span>
+                  <span class="rounded-full bg-subtle px-2.5 py-0.5 font-mono text-[11px] font-medium text-ink">★ 8.2k+ · 31 Merged PRs</span>
                 </div>
                 <h4 class="mt-4 text-[21px] font-semibold tracking-tight text-ink">SoduWork</h4>
                 <p class="mt-2 text-[14px] leading-[1.75] text-muted" data-i18n="act3.soduDesc">
                   面向多 Harness、多智能体团队协作的开源 AI Native 引擎。持续围绕真实工程边界提交补丁：离线质量门禁中的权限回归测试、云端队列会话状态隔离、本地执行元数据一致性、IPv6 预览与桌面端环境修复。
                 </p>
                 <div class="mt-5 space-y-2 border-t border-hairline pt-4 font-mono text-[11.5px] text-muted">
+                  <div class="flex items-center justify-between gap-2"><a href="https://github.com/mdiri-ai/SoduWork/pull/1482" class="hover:text-cobalt">PR #1482 · Robot Task Recovery</a><span class="text-emerald-700">Merged</span></div>
+                  <div class="flex items-center justify-between gap-2"><a href="https://github.com/mdiri-ai/SoduWork/pull/1476" class="hover:text-cobalt">PR #1476 · Upload Recovery</a><span class="text-emerald-700">Merged</span></div>
                   <div class="flex items-center justify-between"><span>PR #1396 · Permission Regression</span><span class="text-emerald-700">Merged</span></div>
-                  <div class="flex items-center justify-between"><span>PR #1390 · Local Exec Metadata</span><span class="text-emerald-700">Merged</span></div>
-                  <div class="flex items-center justify-between"><span>PR #1385 · IPv6 Cloud Previews</span><span class="text-emerald-700">Merged</span></div>
                   <div class="flex items-center justify-between"><span>PR #1345 · Queued Session State</span><span class="text-emerald-700">Merged</span></div>
                 </div>
               </div>
@@ -191,6 +191,16 @@
               </div>
             </div>
           </div>
+
+          <a id="personal-memory" href="https://github.com/codezzzsleep/project-memory-skill" target="_blank" rel="noopener noreferrer" aria-labelledby="personal-memory-title" aria-describedby="personal-memory-description" class="story-card group mt-6 flex scroll-mt-24 flex-col rounded-2xl border border-hairline bg-surface p-6 sm:p-7">
+            <div class="flex items-start justify-between gap-3">
+              <h4 id="personal-memory-title" class="text-[21px] font-semibold text-ink group-hover:text-cobalt transition-colors">Project Memory Skill</h4>
+              <span class="text-faint group-hover:text-ink transition-colors" aria-hidden="true">↗</span>
+            </div>
+            <p id="personal-memory-description" class="mt-2 max-w-3xl text-[14px] leading-[1.75] text-muted" data-i18n="act3.memoryDesc">
+              个人偏好、项目索引和项目记忆分层保存。换会话时只加载选定项目的记忆和账本，核对 Git、运行中的进程和已有作业，再从已确认的进度继续。
+            </p>
+          </a>
         </div>
 
         <!-- ACT 04: Next Frontier — AI4Science, Embodied & Voice-first OS -->
@@ -253,7 +263,7 @@
 
           <a href="https://github.com/codezzzsleep/research-ppt-skill" target="_blank" rel="noopener noreferrer" class="story-card group rounded-2xl border border-hairline bg-surface p-5 sm:p-6 sm:col-span-2">
             <div class="flex items-center justify-between font-mono text-[11px] text-faint">
-              <span>RESEARCH WORKFLOW · ★ 10</span>
+              <span>RESEARCH WORKFLOW · ★ 11</span>
               <span class="group-hover:text-ink transition-colors">↗</span>
             </div>
             <h3 class="mt-3 text-[17px] font-semibold text-ink group-hover:text-cobalt transition-colors">research-ppt-skill</h3>
@@ -361,7 +371,7 @@
           'map.a2Title': 'AI Native OS 生态',
           'map.a2Sub': 'OnCue · GOSIM 2026 一等奖',
           'map.a3Title': 'Personal Agent 共建',
-          'map.a3Sub': 'WebDCC · SoduWork 23 PRs',
+          'map.a3Sub': 'WebDCC · Project Memory · SoduWork',
           'map.a4Title': '科学、具身与下一代 OS',
           'map.a4Sub': 'BeforeStep · Agentic Observer',
           'eng.heading': 'AI Agent 工程主线',
@@ -374,7 +384,8 @@
           'act2.story': '随着 AI Native OS 概念快速升温，国内 OctoSense 团队研发了基于 Rust 的 AI Native OS 与 Rinx 宿主环境。我深度参与完善相关应用与验证生态，围绕「人在群聊开口之前如何安全借力 Agent」这一高频痛点，打造了 <strong class="font-medium text-ink">OnCue · 群聊试映室</strong>——助手写措辞、程序核对事实、人确认发送，获得深圳 GOSIM 2026 智能体应用一等奖（MiniMax 意创万象大奖）。',
           'act3.kicker': 'STAGE 03 · PERSONAL AGENT 与开源共建',
           'act3.title': 'Personal Agent 成为日常后，我造自己的工作台，也在高星社区里修真实问题。',
-          'act3.story': '随着 DeepSeek Harness 与 Super-agent 让 Personal Agent 进入大众视野，真正限制效率的是多会话、多 Agent 并行时的交互与控制权。我先从自身真实使用出发，从零开源了统一网页工作台 <strong class="font-medium text-ink">WebDCC</strong>，原汁原味平级驱动 DeepSeek Harness、Codex 与 Claude Code；同时作为外部贡献者持续参与开源项目 <strong class="font-medium text-ink">SoduWork</strong>（7.5k+ ★），已累计合并 23 个 PR，深入会话状态、权限回归门禁与桌面端稳定性修复。',
+          'act3.story': '随着 Personal Agent 进入日常工程，我开源了统一网页工作台 <strong class="font-medium text-ink">WebDCC</strong>，保留 DeepSeek Harness、Codex 与 Claude Code 的原生交互。我也开发了 <strong class="font-medium text-ink">Project Memory Skill</strong>，让 Agent 能在换会话后恢复多项目工作。作为外部贡献者，我在 <strong class="font-medium text-ink">SoduWork</strong> 的 PR 已有 31 个合并。',
+          'act3.memoryDesc': '个人偏好、项目索引和项目记忆分层保存。换会话时只加载选定项目的记忆和账本，核对 Git、运行中的进程和已有作业，再从已确认的进度继续。',
           'act3.soduDesc': '面向多 Harness、多智能体团队协作的开源 AI Native 引擎。持续围绕真实工程边界提交补丁：离线质量门禁中的权限回归测试、云端队列会话状态隔离、本地执行元数据一致性、IPv6 预览与桌面端环境修复。',
           'act3.soduLink': '查看全部已合并 PR <span>↗</span>',
           'act4.kicker': 'STAGE 04 · 面向未来的下一步',
@@ -417,7 +428,7 @@
           'map.a2Title': 'AI Native OS',
           'map.a2Sub': 'OnCue · GOSIM 2026 1st Prize',
           'map.a3Title': 'Personal Agent & OSS',
-          'map.a3Sub': 'WebDCC · SoduWork 23 PRs',
+          'map.a3Sub': 'WebDCC · Project Memory · SoduWork',
           'map.a4Title': 'Science & Embodied',
           'map.a4Sub': 'BeforeStep · Agentic Observer',
           'eng.heading': 'The AI Agent Engineering Thread',
@@ -430,7 +441,8 @@
           'act2.story': 'With the rise of AI Native OS and OctoSense’s Rust-based OS / Rinx runtime, I contributed to its application ecosystem by building <strong class="font-medium text-ink">OnCue</strong>—a group-chat rehearsal room where the LLM drafts, code verifies facts, and humans approve before sending. It won 1st Prize at GOSIM 2026 Agentic App Hackathon.',
           'act3.kicker': 'STAGE 03 · PERSONAL AGENT & OPEN SOURCE',
           'act3.title': 'When personal agents went mainstream, I built my own workspace and shipped fixes upstream.',
-          'act3.story': 'As DeepSeek Harness and Super-agent brought personal agents into daily engineering, the bottleneck shifted to multi-session control. I open-sourced <strong class="font-medium text-ink">WebDCC</strong> to drive DeepSeek Harness, Codex, and Claude Code natively without prompt injection, while contributing 23 merged PRs to <strong class="font-medium text-ink">SoduWork</strong> (7.5k+ ★).',
+          'act3.story': 'As personal agents became part of my daily work, I built <strong class="font-medium text-ink">WebDCC</strong> to work with DeepSeek Harness, Codex, and Claude Code through their native interfaces. I built <strong class="font-medium text-ink">Project Memory Skill</strong> so agents can resume work across projects and sessions. I have also contributed 31 merged PRs to <strong class="font-medium text-ink">SoduWork</strong>.',
+          'act3.memoryDesc': 'Keep personal preferences, the project index, and project memory in separate layers. Load the selected project and its job ledger on resume, then recheck Git, running processes, and existing jobs before continuing.',
           'act3.soduDesc': 'An open-source AI-native multi-harness team engine. My upstream fixes cover offline permission regression gates, queued session state isolation, execution metadata consistency, IPv6 cloud previews, and desktop packaging.',
           'act3.soduLink': 'View All Merged PRs <span>↗</span>',
           'act4.kicker': 'STAGE 04 · LOOKING AHEAD',
